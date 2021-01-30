@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/all.min.css">
+</head>
+
+<body>
+
+    <div id="totalArea">
+
+
+        <!--Header and Menu Section-->
+        <header class="container">
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a class="active" href="#">Sign Up</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!--Booking Section-->
+        <main class="main-content container">
+            <div class="booking-form">
+                <h3>Booking Flights</h3>
+                <div class="input-group">
+                    <label for="">Flying From</label>
+                    <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+                </div>
+                <div class="input-group">
+                    <label for="">Flying To</label>
+                    <input class="inp-style" type="text" name="" placeholder="New York, United States">
+                </div>
+                <div class="inputs">
+                    <div class="input-group">
+                        <label" for="">Departure</label>
+                            <input class="inp-style" type="date" name="">
+                    </div>
+                    <div class="input-group">
+                        <label for="">Return</label>
+                        <input class="inp-style" type="date" name="">
+                    </div>
+                </div>
+                <div class="input-group f-class">
+                    <div>
+                        <label for="">First Class ($150)</label>
+                        <input class="inp-style inp-width" type="text" name="" id="firstClassDisplay" value="0">
+                    </div>
+                    <div class="plus-minus-btn">
+                        <button style="cursor: pointer; font-size: 15px; background: #000; color: #fff;"
+                            onclick=" increseAndDecrese('firstClass',true)" style="border: none; " class="btn btn-default"><i
+                                class="fas fa-plus"></i></button>
+                        <button style="cursor: pointer; font-size: 15px; background: #000; color: #fff;"
+                            onclick=" increseAndDecrese('firstClass',false)" style="border: none;" class="btn btn-default"><i
+                                class="fas fa-minus"></i></button>
+                    </div>
+                </div>
+
+                <div class="input-group f-class">
+                    <div>
+                        <label for="">Economy ($100)</label>
+                        <input class="inp-style inp-width" type="text" name="" id="economyDisplay" value="0">
+                    </div>
+                    <div class="plus-minus-btn">
+                        <button style="cursor: pointer; font-size: 15px; background: #000; color: #fff;"
+                            onclick="increseAndDecrese('economy',true)" style="border: none;" class="btn btn-default"><i
+                                class="fas fa-plus"></i></button>
+                        <button style="cursor: pointer; font-size: 15px; background: #000; color: #fff;"
+                            onclick="increseAndDecrese('economy',false)" style="border: none;" class="btn btn-default"><i
+                                class="fas fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="calculations">
+                    <div class="amount">
+                        <div class="left">
+                            <p>Subtotal</p>
+                        </div>
+                        <div class="right">
+                            <p id="subTotal">$00</p>
+                        </div>
+                    </div>
+
+                    <div class="amount">
+                        <div class="left">
+                            <p>Charge 10% VAT</p>
+                        </div>
+                        <div class="right">
+                            <p id="vat"> $00</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="amount">
+                        <div class="left">
+                            <h4>Total</h4>
+                        </div>
+                        <div class="right">
+                            <p id="total"> $00</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="clickFunction()" class="btn-style" id="confirm">Book Now</button>
+            </div>
+
+            <div class="booking-content">
+                <h1>discover <br> around the world</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias
+                    veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt
+                    nobise
+                    voluptatibus quam</p>
+            </div>
+            </section>
+
+
+            <!--Thank You-->
+    </div>
+
+    <div id="extra-area">
+        <div class="extra container">
+            <h1 style="text-align: center;" class="invoice">INVOICE</h1>
+            <div class="totalCostArea">
+                <h4>invoice to</h4>
+                <h2 style="margin-bottom: 40px; margin-top: 10px; color: #000;">mehedi hasan anik</h2>
+                <div style="overflow: hidden;">
+                    <div>
+                        <h3 style="float: left;">first class tickt quentity : </h3>
+                    </div>
+                    <div style="float:right ; margin-bottom: 5px;">
+                        <div id="firstQuentity" >0</div>
+                    </div>
+                </div>
+                <div style="overflow: hidden;">
+                    <div style="float: left;">
+                        <h3>economy tickt quentity : </h3>
+                    </div>
+                    <div style="float: right;   margin-bottom: 5px;">
+                        <div id="economyQuentity">0</div>
+                    </div>
+                </div>
+                <div style="overflow: hidden;">
+                    <div style="float: left;">
+                        <h3>total cost : </h3>
+                    </div>
+                    <div style="float: right;  margin-bottom: 5px;">
+                        <div id="allCost"> $0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        function increseAndDecrese(ticket,isIncrese) {
+            var count = document.getElementById(ticket + 'Display').value;
+            var countNumberConvert = parseFloat(count);
+            console.log(countNumberConvert);
+            var countNumber = countNumberConvert;
+            if (isIncrese == true) {
+                var countNumber = countNumber + 1;
+            } else {
+                if (isIncrese == false && countNumber > 0) {
+                    var countNumber = countNumber - 1;
+                }
+            }
+            document.getElementById(ticket + 'Display').value = countNumber;
+            Subtotal();
+        }
+   
+        function Subtotal() {
+            var firstDisplayQuentity = document.getElementById("firstClassDisplay").value;
+            var firstDisplayQuentityNumber = parseFloat(firstDisplayQuentity);
+            var firstDisplayQuentityTotal = firstDisplayQuentityNumber * 150;
+            var economyDisplayQuentity = document.getElementById("economyDisplay").value;
+            var economyDisplayQuentityNumber = parseFloat(economyDisplayQuentity);
+            var economyDisplayQuentityTotal = economyDisplayQuentityNumber * 100;
+            var allSubTotal = economyDisplayQuentityTotal + firstDisplayQuentityTotal;
+            var vat = allSubTotal * 0.1;
+            var total = vat + allSubTotal;
+            document.getElementById("total").innerText = '$' + total;
+            document.getElementById("vat").innerText = '$' + vat;
+            document.getElementById("subTotal").innerText = '$' + allSubTotal;
+        }
+
+        function clickFunction() {
+            document.getElementById("extra-area").style.display = "block";
+            document.getElementById("totalArea").style.display = "none";
+            var display1 = document.getElementById("firstClassDisplay").value;
+            var display1ConvertNumber = parseFloat(display1);
+            var display2 = document.getElementById("economyDisplay").value;
+            var display2ConvertNumber = parseFloat(display2);
+            var subTotalCost = display1ConvertNumber * 150 + display2ConvertNumber * 100;
+            var tax = subTotalCost * 0.1;
+            var totalCost = tax + subTotalCost;
+            document.getElementById("allCost").textContent = '$' + totalCost;
+            document.getElementById("firstQuentity").textContent = display1ConvertNumber;
+            document.getElementById("economyQuentity").textContent = display2ConvertNumber;
+        }
+
+        
+    </script>
+
+    <script src="js/all.min.js"></script>
+</body>
+
+</html>
